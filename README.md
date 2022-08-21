@@ -8,8 +8,11 @@ Learning to build an E-Commerce platform.
 - Unknown API - Spring Board or Go
 - Angualar Front end
 - Docker
+- Tailwind CSS
 
 # Release Plan
+
+Subject to change as I learn these technologies.
 
 ## Week 1 Features
 
@@ -30,6 +33,8 @@ Learning to build an E-Commerce platform.
 - Dockerize the API
 
 ## Week 3 Features
+
+### Using Tailwind
 
 - Home Page
 - Product Page
