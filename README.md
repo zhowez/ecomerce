@@ -13,7 +13,7 @@ Learning to build an E-Commerce platform.
 
 ## Week 1 Features
 
-- Diagram Database
+- Diagram Database - Completed 08/20/22
 - Create Database in Docker
 - Create Tables
 - Create test scripts to load/retrieve data
