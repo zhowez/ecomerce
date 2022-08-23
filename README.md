@@ -25,6 +25,8 @@ Subject to change as I learn these technologies.
   - Accounts
   - Housing info
   - Matching info
+- Get univeristy info from a public API?
+- Verify address info from a public API?
 - Dockerize the API
 
 ### Using Tailwind
@@ -43,5 +45,6 @@ Subject to change as I learn these technologies.
 - Add account authentication
 - Add Account images
 - Add messaging feature
+- link to social accounts
 - Create Mobile version of site
 - Create IOS app for store
