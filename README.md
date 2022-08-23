@@ -1,6 +1,6 @@
-# E-Comerce
+# Roommate Matching app
 
-Learning to build an E-Commerce platform.
+Building a Better way to find future college roommates
 
 # Tech Stack
 
@@ -14,44 +14,34 @@ Learning to build an E-Commerce platform.
 
 Subject to change as I learn these technologies.
 
-## Week 1 Features
+## Todo List
 
-- Diagram Database - Completed 08/20/22
+- Diagram Database
 - Create Database in Docker
 - Create Tables
 - Create test scripts to load/retrieve data
-
-## Week 2 Features
-
 - Decide on API Framework
 - Create endpoints for
   - Accounts
-  - Orders
-  - Products
-  - Product
-  - Inventory
+  - Housing info
+  - Matching info
 - Dockerize the API
-
-## Week 3 Features
 
 ### Using Tailwind
 
 - Home Page
-- Product Page
-- Products Page
-- Cart
-- Account
-- Order History
+- Account Page
+- Swipe Page
+- List of matches Page
+- Match Modal
+- Onboarding process
 - Dockerize Web App
 
-## Week 4+
+## Future Features once base app is completed
 
+- Create a matching algorithm
 - Add account authentication
-- Add product images
-- Add search fucntionallity
-- Admin Pages for:
-  - Sales Metrics
-  - Orders
-  - Adding PRoduct
+- Add Account images
+- Add messaging feature
 - Create Mobile version of site
 - Create IOS app for store
