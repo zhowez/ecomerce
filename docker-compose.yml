@@ -1,0 +1,8 @@
+version: "3.4"
+
+services:
+  roomatematching:
+    image: roomatematching-database
+    build:
+      context: ./Database
+      dockerfile: Dockerfile
