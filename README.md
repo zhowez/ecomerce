@@ -1,4 +1,4 @@
-# Roommate Matching app
+# Roommate Matching app - 2nd Home
 
 Building a Better way to find future college roommates
 
