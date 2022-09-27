@@ -2,23 +2,11 @@ CREATE DATABASE IF NOT EXISTS Accounts;
 
 USE Accounts;
 
-CREATE TABLE IF NOT EXISTS CUSTOMER
+CREATE TABLE IF NOT EXISTS University_List
 (
-    Customer_ID            int          NOT NULL,
-    Customer_First_Name    varchar(100) NOT NULL,
-    Customer_Last_Name     varchar(100) NOT NULL,
-    Customer_Address_1     varchar(100) NOT NULL,
-    Customer_Address_2     varchar(100),
-    Customer_City          varchar(50)  NOT NULL,
-    Customer_State         varchar(50)  NOT NULL,
-    Customer_Zip           varchar(5)   NOT NULL,
-    Customer_Email         varchar(50)  NOT NULL,
-    Customer_Password_Hash varchar(50)  NOT NULL,
-    Customer_University    varchar(50)  NOT NULL,
-    Customer_Class_Rank    varchar(10)  NOT NULL,
-    Customer_Gender        varchar(50)  NOT NULL,
-
-    PRIMARY KEY (Customer_ID)
+    University_ID   int         NOT NULL unique,
+    University_Name varchar(50) NOT NULL,
+    PRIMARY KEY (University_ID)
 
 );
 
@@ -40,6 +28,30 @@ INSERT INTO Desired_Gender
 
 INSERT INTO Desired_Gender
     VALUE ("NonBinary", 4);
+
+
+CREATE TABLE IF NOT EXISTS CUSTOMER
+(
+    Customer_ID            int          NOT NULL,
+    Customer_First_Name    varchar(100) NOT NULL,
+    Customer_Last_Name     varchar(100) NOT NULL,
+    Customer_Address_1     varchar(100) NOT NULL,
+    Customer_Address_2     varchar(100),
+    Customer_City          varchar(50)  NOT NULL,
+    Customer_State         varchar(50)  NOT NULL,
+    Customer_Zip           varchar(5)   NOT NULL,
+    Customer_Email         varchar(50)  NOT NULL,
+    Customer_Password_Hash varchar(50)  NOT NULL,
+    Customer_University_ID    varchar(50)  NOT NULL,
+    Customer_Class_Rank    varchar(10)  NOT NULL,
+    Customer_Gender_ID     int  NOT NULL,
+
+    PRIMARY KEY (Customer_ID),
+    FOREIGN KEY (Customer_University_ID) REFERENCES University_List(University_ID),
+    FOREIGN KEY (Customer_Gender_ID) REFERENCES Desired_Gender(Gender_ID)
+
+);
+
 
 
 CREATE TABLE IF NOT EXISTS Customer_Desired_Match_Info
@@ -85,13 +97,7 @@ VALUES (2);
 INSERT INTO Dorm_Rank_Values
 VALUES (3);
 
-CREATE TABLE IF NOT EXISTS University_List
-(
-    University_ID   int         NOT NULL unique,
-    University_Name varchar(50) NOT NULL,
-    PRIMARY KEY (University_ID)
 
-);
 
 
 CREATE TABLE IF NOT EXISTS Dorm_List
