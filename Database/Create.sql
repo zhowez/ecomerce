@@ -30,7 +30,7 @@ INSERT INTO Desired_Gender
     VALUE ("NonBinary", 4);
 
 
-CREATE TABLE IF NOT EXISTS CUSTOMER
+CREATE TABLE IF NOT EXISTS Customer
 (
     Customer_ID            int          NOT NULL,
     Customer_First_Name    varchar(100) NOT NULL,
