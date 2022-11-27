@@ -1,6 +1,6 @@
 package com.roommatematching.rmapi;
-import com.roommatematching.rmapi.University.UniversityList;
-import com.roommatematching.rmapi.University.UniversityListRepository;
+import com.roommatematching.rmapi.university.UniversityList;
+import com.roommatematching.rmapi.university.UniversityListRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

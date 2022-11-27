@@ -1,4 +1,4 @@
-package com.roommatematching.rmapi.University;
+package com.roommatematching.rmapi.university;
 
 
 import jakarta.persistence.Entity;

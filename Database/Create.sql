@@ -2,6 +2,7 @@ CREATE DATABASE IF NOT EXISTS Accounts;
 
 USE Accounts;
 
+# university info
 CREATE TABLE IF NOT EXISTS university_list
 (
     University_ID   int         NOT NULL unique,
@@ -9,7 +10,7 @@ CREATE TABLE IF NOT EXISTS university_list
     PRIMARY KEY (University_ID)
 
 );
-
+# type info
 CREATE TABLE IF NOT EXISTS desired_gender
 (
     Gender    varchar(50) NOT NULL,
@@ -29,7 +30,7 @@ INSERT INTO desired_gender
 INSERT INTO desired_gender
     VALUE ("NonBinary", 4);
 
-
+# customer info
 CREATE TABLE IF NOT EXISTS customer
 (
     Customer_ID            int          NOT NULL,
@@ -53,7 +54,7 @@ CREATE TABLE IF NOT EXISTS customer
 );
 
 
-
+# customer info
 CREATE TABLE IF NOT EXISTS customer_desired_match_info
 (
     Customer_Id       int     NOT NULL,
@@ -65,7 +66,7 @@ CREATE TABLE IF NOT EXISTS customer_desired_match_info
 
 );
 
-
+# type info
 CREATE TABLE IF NOT EXISTS interests_list
 (
     Interest_ID   int         NOT NULL,
@@ -73,6 +74,7 @@ CREATE TABLE IF NOT EXISTS interests_list
     PRIMARY KEY (Interest_ID)
 );
 
+# customer info
 CREATE TABLE IF NOT EXISTS customer_interests_list
 (
     Customer_ID int NOT NULL,
@@ -82,6 +84,7 @@ CREATE TABLE IF NOT EXISTS customer_interests_list
     FOREIGN KEY (Interest_ID) REFERENCES interests_list (Interest_ID)
 );
 
+# type info
 CREATE TABLE IF NOT EXISTS dorm_rank_values
 (
     Rank_Value int NOT NULL,
@@ -99,7 +102,7 @@ VALUES (3);
 
 
 
-
+# university info
 CREATE TABLE IF NOT EXISTS dorm_list
 (
     Dorm_ID       int          not null UNIQUE,
@@ -110,7 +113,7 @@ CREATE TABLE IF NOT EXISTS dorm_list
 
 );
 
-
+# customer info
 CREATE TABLE IF NOT EXISTS customer_top_three_dorms
 (
     Customer_ID int not null,
@@ -122,7 +125,7 @@ CREATE TABLE IF NOT EXISTS customer_top_three_dorms
     FOREIGN KEY (Rank_Value) REFERENCES dorm_rank_values (Rank_Value)
 );
 
-
+# match info
 CREATE TABLE IF NOT EXISTS matches
 (
     Customer_ID_1 int not null,
@@ -132,7 +135,7 @@ CREATE TABLE IF NOT EXISTS matches
     FOREIGN KEY (Customer_ID_2) REFERENCES customer (Customer_ID)
 );
 
-
+# customer info
 CREATE TABLE IF NOT EXISTS potential_matches
 (
     Customer_ID        int not null,
@@ -142,6 +145,7 @@ CREATE TABLE IF NOT EXISTS potential_matches
     FOREIGN KEY (Potential_Match_ID) REFERENCES customer (Customer_ID)
 );
 
+# customer info
 CREATE TABLE IF NOT EXISTS customer_swiped_accounts
 (
     Customer_ID        int       not null,
