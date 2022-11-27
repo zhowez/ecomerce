@@ -2,7 +2,7 @@ CREATE DATABASE IF NOT EXISTS Accounts;
 
 USE Accounts;
 
-CREATE TABLE IF NOT EXISTS University_List
+CREATE TABLE IF NOT EXISTS university_list
 (
     University_ID   int         NOT NULL unique,
     University_Name varchar(50) NOT NULL,
@@ -10,27 +10,27 @@ CREATE TABLE IF NOT EXISTS University_List
 
 );
 
-CREATE TABLE IF NOT EXISTS Desired_Gender
+CREATE TABLE IF NOT EXISTS desired_gender
 (
     Gender    varchar(50) NOT NULL,
     Gender_ID int         NOT NULL,
     PRIMARY KEY (Gender_ID)
 );
 
-INSERT INTO Desired_Gender
+INSERT INTO desired_gender
 VALUES ("Male", 1);
 
-INSERT INTO Desired_Gender
+INSERT INTO desired_gender
     VALUE ("Female", 2);
 
-INSERT INTO Desired_Gender
+INSERT INTO desired_gender
     VALUE ("Trans", 3);
 
-INSERT INTO Desired_Gender
+INSERT INTO desired_gender
     VALUE ("NonBinary", 4);
 
 
-CREATE TABLE IF NOT EXISTS Customer
+CREATE TABLE IF NOT EXISTS customer
 (
     Customer_ID            int          NOT NULL,
     Customer_First_Name    varchar(100) NOT NULL,
@@ -47,110 +47,110 @@ CREATE TABLE IF NOT EXISTS Customer
     Customer_Gender_ID     int  NOT NULL,
 
     PRIMARY KEY (Customer_ID),
-    FOREIGN KEY (Customer_University_ID) REFERENCES University_List(University_ID),
-    FOREIGN KEY (Customer_Gender_ID) REFERENCES Desired_Gender(Gender_ID)
+    FOREIGN KEY (Customer_University_ID) REFERENCES university_list(University_ID),
+    FOREIGN KEY (Customer_Gender_ID) REFERENCES desired_gender(Gender_ID)
 
 );
 
 
 
-CREATE TABLE IF NOT EXISTS Customer_Desired_Match_Info
+CREATE TABLE IF NOT EXISTS customer_desired_match_info
 (
     Customer_Id       int     NOT NULL,
     Desired_Gender_ID int     NOT NULL,
     Is_Extroverted    boolean NOT NULL,
     PRIMARY KEY (Customer_Id),
-    FOREIGN KEY (Customer_Id) REFERENCES Customer (Customer_ID),
-    FOREIGN KEY (Desired_Gender_ID) REFERENCES Desired_Gender (Gender_ID)
+    FOREIGN KEY (Customer_Id) REFERENCES customer (Customer_ID),
+    FOREIGN KEY (Desired_Gender_ID) REFERENCES desired_gender (Gender_ID)
 
 );
 
 
-CREATE TABLE IF NOT EXISTS Interests_List
+CREATE TABLE IF NOT EXISTS interests_list
 (
     Interest_ID   int         NOT NULL,
     Interest_Name varchar(50) NOT NULL,
     PRIMARY KEY (Interest_ID)
 );
 
-CREATE TABLE IF NOT EXISTS Customer_Interests_List
+CREATE TABLE IF NOT EXISTS customer_interests_list
 (
     Customer_ID int NOT NULL,
     Interest_ID int NOT NULL,
     PRIMARY KEY (Customer_ID),
-    FOREIGN KEY (Customer_ID) REFERENCES Customer (Customer_ID),
-    FOREIGN KEY (Interest_ID) REFERENCES Interests_List (Interest_ID)
+    FOREIGN KEY (Customer_ID) REFERENCES customer (Customer_ID),
+    FOREIGN KEY (Interest_ID) REFERENCES interests_list (Interest_ID)
 );
 
-CREATE TABLE IF NOT EXISTS Dorm_Rank_Values
+CREATE TABLE IF NOT EXISTS dorm_rank_values
 (
     Rank_Value int NOT NULL,
     PRIMARY KEY (Rank_Value)
 );
 
-INSERT INTO Dorm_Rank_Values
+INSERT INTO dorm_rank_values
 VALUES (1);
 
-INSERT INTO Dorm_Rank_Values
+INSERT INTO dorm_rank_values
 VALUES (2);
 
-INSERT INTO Dorm_Rank_Values
+INSERT INTO dorm_rank_values
 VALUES (3);
 
 
 
 
-CREATE TABLE IF NOT EXISTS Dorm_List
+CREATE TABLE IF NOT EXISTS dorm_list
 (
     Dorm_ID       int          not null UNIQUE,
     Dorm_Name     varchar(100) NOT NULL UNIQUE,
     University_ID int          NOT NULL UNIQUE,
     PRIMARY KEY (Dorm_ID),
-    FOREIGN KEY (University_ID) REFERENCES University_List (University_ID)
+    FOREIGN KEY (University_ID) REFERENCES university_list (University_ID)
 
 );
 
 
-CREATE TABLE IF NOT EXISTS Customer_Top_Three_Dorms
+CREATE TABLE IF NOT EXISTS customer_top_three_dorms
 (
     Customer_ID int not null,
     Dorm_ID     int not null,
     Rank_Value  int not null,
     Primary Key (Customer_ID, Dorm_ID, Rank_Value),
-    FOREIGN KEY (Customer_ID) REFERENCES Customer (Customer_ID),
-    FOREIGN KEY (Dorm_ID) REFERENCES Dorm_List (Dorm_ID),
-    FOREIGN KEY (Rank_Value) REFERENCES Dorm_Rank_Values (Rank_Value)
+    FOREIGN KEY (Customer_ID) REFERENCES customer (Customer_ID),
+    FOREIGN KEY (Dorm_ID) REFERENCES dorm_list (Dorm_ID),
+    FOREIGN KEY (Rank_Value) REFERENCES dorm_rank_values (Rank_Value)
 );
 
 
-CREATE TABLE IF NOT EXISTS Matches
+CREATE TABLE IF NOT EXISTS matches
 (
     Customer_ID_1 int not null,
     Customer_ID_2 int not null,
     PRIMARY KEY (Customer_ID_1, Customer_ID_2),
-    FOREIGN KEY (Customer_ID_1) REFERENCES Customer (Customer_ID),
-    FOREIGN KEY (Customer_ID_2) REFERENCES Customer (Customer_ID)
+    FOREIGN KEY (Customer_ID_1) REFERENCES customer (Customer_ID),
+    FOREIGN KEY (Customer_ID_2) REFERENCES customer (Customer_ID)
 );
 
 
-CREATE TABLE IF NOT EXISTS Potential_Matches
+CREATE TABLE IF NOT EXISTS potential_matches
 (
     Customer_ID        int not null,
     Potential_Match_ID int not null,
     PRIMARY KEY (Customer_ID, Potential_Match_ID),
-    FOREIGN KEY (Customer_ID) REFERENCES Customer (Customer_ID),
-    FOREIGN KEY (Potential_Match_ID) REFERENCES Customer (Customer_ID)
+    FOREIGN KEY (Customer_ID) REFERENCES customer (Customer_ID),
+    FOREIGN KEY (Potential_Match_ID) REFERENCES customer (Customer_ID)
 );
 
-CREATE TABLE IF NOT EXISTS Customer_Swiped_Accounts
+CREATE TABLE IF NOT EXISTS customer_swiped_accounts
 (
     Customer_ID        int       not null,
     Potential_Match_ID int       not null,
     Response_Time      TIMESTAMP NOT NULL,
     isLiked            BOOLEAN   NOT NULL,
     PRIMARY KEY (Customer_ID, Potential_Match_ID),
-    FOREIGN KEY (Customer_ID) REFERENCES Customer (Customer_ID),
-    FOREIGN KEY (Potential_Match_ID) REFERENCES Customer (Customer_ID)
+    FOREIGN KEY (Customer_ID) REFERENCES customer (Customer_ID),
+    FOREIGN KEY (Potential_Match_ID) REFERENCES customer (Customer_ID)
 );
 
 

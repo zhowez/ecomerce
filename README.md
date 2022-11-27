@@ -52,3 +52,7 @@ Subject to change as I learn these technologies.
 
 ## Docker Compose Commandline 
 - Docker Compose up
+
+
+## Notes
+- I turned off security on the main class for the API so I can test endpoints. TURN THIS ON BEFORE WORKING ON AUTHENTICATION!!!
