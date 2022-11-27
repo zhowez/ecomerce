@@ -42,7 +42,7 @@ CREATE TABLE IF NOT EXISTS Customer
     Customer_Zip           varchar(5)   NOT NULL,
     Customer_Email         varchar(50)  NOT NULL,
     Customer_Password_Hash varchar(50)  NOT NULL,
-    Customer_University_ID    varchar(50)  NOT NULL,
+    Customer_University_ID    int  NOT NULL,
     Customer_Class_Rank    varchar(10)  NOT NULL,
     Customer_Gender_ID     int  NOT NULL,
 
@@ -60,7 +60,7 @@ CREATE TABLE IF NOT EXISTS Customer_Desired_Match_Info
     Desired_Gender_ID int     NOT NULL,
     Is_Extroverted    boolean NOT NULL,
     PRIMARY KEY (Customer_Id),
-    FOREIGN KEY (Customer_Id) REFERENCES CUSTOMER (Customer_ID),
+    FOREIGN KEY (Customer_Id) REFERENCES Customer (Customer_ID),
     FOREIGN KEY (Desired_Gender_ID) REFERENCES Desired_Gender (Gender_ID)
 
 );
@@ -78,7 +78,7 @@ CREATE TABLE IF NOT EXISTS Customer_Interests_List
     Customer_ID int NOT NULL,
     Interest_ID int NOT NULL,
     PRIMARY KEY (Customer_ID),
-    FOREIGN KEY (Customer_ID) REFERENCES CUSTOMER (Customer_ID),
+    FOREIGN KEY (Customer_ID) REFERENCES Customer (Customer_ID),
     FOREIGN KEY (Interest_ID) REFERENCES Interests_List (Interest_ID)
 );
 
@@ -117,7 +117,7 @@ CREATE TABLE IF NOT EXISTS Customer_Top_Three_Dorms
     Dorm_ID     int not null,
     Rank_Value  int not null,
     Primary Key (Customer_ID, Dorm_ID, Rank_Value),
-    FOREIGN KEY (Customer_ID) REFERENCES CUSTOMER (Customer_ID),
+    FOREIGN KEY (Customer_ID) REFERENCES Customer (Customer_ID),
     FOREIGN KEY (Dorm_ID) REFERENCES Dorm_List (Dorm_ID),
     FOREIGN KEY (Rank_Value) REFERENCES Dorm_Rank_Values (Rank_Value)
 );
@@ -128,8 +128,8 @@ CREATE TABLE IF NOT EXISTS Matches
     Customer_ID_1 int not null,
     Customer_ID_2 int not null,
     PRIMARY KEY (Customer_ID_1, Customer_ID_2),
-    FOREIGN KEY (Customer_ID_1) REFERENCES CUSTOMER (Customer_ID),
-    FOREIGN KEY (Customer_ID_2) REFERENCES CUSTOMER (Customer_ID)
+    FOREIGN KEY (Customer_ID_1) REFERENCES Customer (Customer_ID),
+    FOREIGN KEY (Customer_ID_2) REFERENCES Customer (Customer_ID)
 );
 
 
@@ -138,8 +138,8 @@ CREATE TABLE IF NOT EXISTS Potential_Matches
     Customer_ID        int not null,
     Potential_Match_ID int not null,
     PRIMARY KEY (Customer_ID, Potential_Match_ID),
-    FOREIGN KEY (Customer_ID) REFERENCES CUSTOMER (Customer_ID),
-    FOREIGN KEY (Potential_Match_ID) REFERENCES CUSTOMER (Customer_ID)
+    FOREIGN KEY (Customer_ID) REFERENCES Customer (Customer_ID),
+    FOREIGN KEY (Potential_Match_ID) REFERENCES Customer (Customer_ID)
 );
 
 CREATE TABLE IF NOT EXISTS Customer_Swiped_Accounts
@@ -149,8 +149,8 @@ CREATE TABLE IF NOT EXISTS Customer_Swiped_Accounts
     Response_Time      TIMESTAMP NOT NULL,
     isLiked            BOOLEAN   NOT NULL,
     PRIMARY KEY (Customer_ID, Potential_Match_ID),
-    FOREIGN KEY (Customer_ID) REFERENCES CUSTOMER (Customer_ID),
-    FOREIGN KEY (Potential_Match_ID) REFERENCES CUSTOMER (Customer_ID)
+    FOREIGN KEY (Customer_ID) REFERENCES Customer (Customer_ID),
+    FOREIGN KEY (Potential_Match_ID) REFERENCES Customer (Customer_ID)
 );
 
 

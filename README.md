@@ -48,3 +48,7 @@ Subject to change as I learn these technologies.
 - link to social accounts
 - Create Mobile version of site
 - Create IOS app for store
+
+
+## Docker Compose Commandline 
+- Docker Compose up

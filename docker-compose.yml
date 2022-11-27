@@ -9,10 +9,10 @@ services:
     ports:
       - 3306:3306
 
-  roomatematching-server:
-    image: roomatematching-backend
-    build:
-      context: ./Backend
-      dockerfile: Dockerfile
-    ports:
-      - 3000:30000
+  # roomatematching-server:
+  #   image: roomatematching-backend
+  #   build:
+  #     context: ./Backend
+  #     dockerfile: Dockerfile
+  #   ports:
+  #     - 3000:30000
