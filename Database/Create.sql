@@ -18,17 +18,19 @@ CREATE TABLE IF NOT EXISTS desired_gender
     PRIMARY KEY (Gender_ID)
 );
 
-INSERT INTO desired_gender
-VALUES ("Male", 1);
 
 INSERT INTO desired_gender
-    VALUE ("Female", 2);
+VALUES (Gender="Male", Gender_ID=1);
 
 INSERT INTO desired_gender
-    VALUE ("Trans", 3);
+    VALUE (Gender="Female", Gender_ID=2);
 
 INSERT INTO desired_gender
-    VALUE ("NonBinary", 4);
+    VALUE (Gender="Trans", Gender_ID=3);
+
+INSERT INTO desired_gender
+    VALUE (Gender="NonBinary", Gender_ID=4);
+
 
 # customer info
 CREATE TABLE IF NOT EXISTS customer
@@ -43,13 +45,13 @@ CREATE TABLE IF NOT EXISTS customer
     Customer_Zip           varchar(5)   NOT NULL,
     Customer_Email         varchar(50)  NOT NULL,
     Customer_Password_Hash varchar(50)  NOT NULL,
-    Customer_University_ID    int  NOT NULL,
+    Customer_University_ID int          NOT NULL,
     Customer_Class_Rank    varchar(10)  NOT NULL,
-    Customer_Gender_ID     int  NOT NULL,
+    Customer_Gender_ID     int          NOT NULL,
 
     PRIMARY KEY (Customer_ID),
-    FOREIGN KEY (Customer_University_ID) REFERENCES university_list(University_ID),
-    FOREIGN KEY (Customer_Gender_ID) REFERENCES desired_gender(Gender_ID)
+    FOREIGN KEY (Customer_University_ID) REFERENCES university_list (University_ID),
+    FOREIGN KEY (Customer_Gender_ID) REFERENCES desired_gender (Gender_ID)
 
 );
 
@@ -99,7 +101,6 @@ VALUES (2);
 
 INSERT INTO dorm_rank_values
 VALUES (3);
-
 
 
 # university info

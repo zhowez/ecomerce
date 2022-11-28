@@ -1,14 +1,16 @@
 package com.roommatematching.rmapi.university;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
 @Entity
 public class UniversityList {
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @SequenceGenerator(name = "university_list_seq",
+            sequenceName = "university_list_sequence",
+            initialValue = 1, allocationSize = 20)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "university_list_seq")
+    @Column(name = "University_ID", nullable = false)
     private Integer University_ID;
 
     private String University_Name;

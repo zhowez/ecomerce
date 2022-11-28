@@ -26,10 +26,10 @@ public class UniversityController {
         UniversityList u = new UniversityList();
         u.setUniversityName(uniName);
         UniversityListRepo.save(u);
-        return "Saved";
+        return "Saved University";
     }
 
-    @GetMapping(path="/get")
+    @GetMapping(path="/getall")
     public  @ResponseBody Iterable<UniversityList> getAllUniversities() {
         return UniversityListRepo.findAll();
     }
