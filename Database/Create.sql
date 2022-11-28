@@ -20,16 +20,16 @@ CREATE TABLE IF NOT EXISTS desired_gender
 
 
 INSERT INTO desired_gender
-VALUES (Gender="Male", Gender_ID=1);
+VALUES ("Male", 1);
 
 INSERT INTO desired_gender
-    VALUE (Gender="Female", Gender_ID=2);
+    VALUE ("Female", 2);
 
 INSERT INTO desired_gender
-    VALUE (Gender="Trans", Gender_ID=3);
+    VALUE ("Trans", 3);
 
 INSERT INTO desired_gender
-    VALUE (Gender="NonBinary", Gender_ID=4);
+    VALUE ("NonBinary", 4);
 
 
 # customer info
