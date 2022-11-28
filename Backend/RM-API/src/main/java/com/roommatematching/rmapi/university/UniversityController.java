@@ -1,6 +1,4 @@
-package com.roommatematching.rmapi;
-import com.roommatematching.rmapi.university.UniversityList;
-import com.roommatematching.rmapi.university.UniversityListRepository;
+package com.roommatematching.rmapi.university;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,11 +9,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 
 @Controller // This means that this class is a Controller
-@RequestMapping(path="/demo") // This means URL's start with /demo (after Application path)
-public class AccountController {
+@RequestMapping(path="/api/university") // This means URL's start with /demo (after Application path)
+public class UniversityController {
 
+    private final UniversityListRepository UniversityListRepo;
     @Autowired
-    private UniversityListRepository UniversityListRepo;
+    public UniversityController(UniversityListRepository UniversityListRepo) {
+        this.UniversityListRepo = UniversityListRepo;
+    }
 
     @PostMapping(path="/add")
     public @ResponseBody String addNewUniversity (@RequestParam String uniName) {
@@ -28,7 +29,7 @@ public class AccountController {
         return "Saved";
     }
 
-    @GetMapping(path="/all")
+    @GetMapping(path="/get")
     public  @ResponseBody Iterable<UniversityList> getAllUniversities() {
         return UniversityListRepo.findAll();
     }
